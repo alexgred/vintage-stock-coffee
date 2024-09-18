@@ -1,6 +1,12 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --xs-width: 320px;
+  --sm-width: 768px;
+  --md-width: 1024px;
+  --lg-width: 1200px;
+  --xl-width: 1440px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -38,5 +44,44 @@ a {
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+}
+
+.container {
+  padding: 0 10px;
+}
+
+.container {
+  padding: 0 10px;
+  width: 100%;
+  margin: auto;
+}
+
+@media (min-width: 768px) {
+
+  .container {
+    width: var(--sm-width);
+  }
+}
+
+@media (min-width: 1024px) {
+
+  .container {
+    width: var(--md-width);
+    padding: 0 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+
+  .container {
+    width: var(--lg-width);
+  }
+}
+
+@media (min-width: 1440px) {
+
+  .container {
+    width: var(--xl-width);
   }
 }

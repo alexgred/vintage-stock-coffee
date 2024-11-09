@@ -50,6 +50,8 @@ export default function OrderList() {
           name={order.name}
           user={order.user}
           price={order.price}
+          timestamp={order.timestamp}
+          minutes={order.minutes}
           event={() => eventDelete(index)}
           buttonText="Оплачено"
         />,
@@ -61,6 +63,8 @@ export default function OrderList() {
           name={order.name}
           user={order.user}
           price={order.price}
+          timestamp={order.timestamp}
+          minutes={order.minutes}
           event={() => eventDone(index)}
           buttonText="Готово"
         />,

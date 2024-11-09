@@ -28,6 +28,8 @@ export interface OrderItemProps {
   name: string;
   user: string;
   price: number;
+  timestamp: number;
+  minutes: number;
   event: () => void;
   buttonText?: string;
 }

@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import jsonfile from 'jsonfile';
+import { OrderData } from '@/types';
 
 type Index = {
   index: number;

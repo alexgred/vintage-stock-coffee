@@ -2,7 +2,7 @@
  * Interface order data from request.
  * @interface
  */
-interface OrderData {
+export interface OrderData {
   orders: Order[];
 }
 
@@ -10,7 +10,7 @@ interface OrderData {
  * Interface for order item.
  * @interface
  */
-interface Order {
+export interface Order {
   id: number;
   name: string;
   user: string;
@@ -24,7 +24,7 @@ interface Order {
  * Interface for company item props.
  * @interface
  */
-interface OrderItemProps {
+export interface OrderItemProps {
   name: string;
   user: string;
   price: number;

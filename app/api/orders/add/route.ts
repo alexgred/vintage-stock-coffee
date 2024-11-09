@@ -1,3 +1,4 @@
+import { Order, OrderData } from '@/types';
 import jsonfile from 'jsonfile';
 
 export async function POST(req: Request) {

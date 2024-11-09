@@ -3,9 +3,10 @@
 import { fetcher } from '@/lib/fetcher';
 import useSWR from 'swr';
 import { OrderItem } from '@/components';
+import { Order } from '@/types';
 
 import styles from './OrderList.module.css';
-import { ReactNode, useEffect } from 'react';
+import { ReactNode} from 'react';
 
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 export default function OrderList() {
@@ -17,23 +18,6 @@ export default function OrderList() {
     },
   );
   const orders: Order[] = data?.orders;
-
-  // useEffect(() => {
-  //   const qw: ReactNode = orders?.map((order: Order) => {
-  //     return (
-  //       <OrderItem
-  //         key={order.id}
-  //         name={order.name}
-  //         user={order.user}
-  //         price={order.price}
-  //         event={() => eventDelete(order.id)}
-  //         buttonText="Удалить"
-  //       />
-  //     );
-  //   });
-
-  //   console.log(qw);
-  // }, [orders, eventDelete]);
 
   async function eventDelete(index: number) {
     mutate(
@@ -84,26 +68,12 @@ export default function OrderList() {
     }
   });
 
-  const qw: ReactNode = orders?.map((order: Order) => {
-    return (
-      <OrderItem
-        key={order.id}
-        name={order.name}
-        user={order.user}
-        price={order.price}
-        event={() => eventDelete(order.id)}
-        buttonText="Удалить"
-      />
-    );
-  });
-
   return (
     <div className="container">
       <h2 className={styles.title}>В процессе</h2>
-      {/* <div className={styles.wrapper}>{listInProgress}</div> */}
+      <div className={styles.wrapper}>{listInProgress}</div>
       <h2 className={styles.title}>Выполнено</h2>
-      {/* <div className={styles.wrapper}>{listDone}</div> */}
-      {qw}
+      <div className={styles.wrapper}>{listDone}</div>
     </div>
   );
 }

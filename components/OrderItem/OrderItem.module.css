@@ -1,11 +1,19 @@
 .wrapper {
   width: 100%;
   display: flex;
-  justify-content: middle;
   align-items: center;
   padding: 10px 20px;
 }
 
+.odd {
+  background-color: #1f1f1f;
+}
+
 .item {
-  flex: 1;
+  flex: 1 1;
+  display: flex;
+}
+
+.center {
+
 }

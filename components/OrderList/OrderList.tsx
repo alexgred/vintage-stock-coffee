@@ -47,6 +47,7 @@ export default function OrderList() {
       listDone.push(
         <OrderItem
           key={order.id}
+          className={++index % 2 === 0 ? 'even' : 'odd'}
           name={order.name}
           user={order.user}
           price={order.price}
@@ -60,6 +61,7 @@ export default function OrderList() {
       listInProgress.push(
         <OrderItem
           key={order.id}
+          className={++index % 2 === 0 ? 'even' : 'odd'}
           name={order.name}
           user={order.user}
           price={order.price}

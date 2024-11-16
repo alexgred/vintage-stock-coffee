@@ -4,6 +4,7 @@ import { Bot } from 'grammy';
 
 type Message = {
   message: string;
+  userId: number;
 };
 
 export async function POST(req: Request) {
@@ -11,7 +12,7 @@ export async function POST(req: Request) {
 
   config();
   const bot = new Bot(process.env.BOT_TOKEN as string);
-  bot.api.sendMessage(789808291, data?.message);
+  bot.api.sendMessage(data.userId, data?.message);
 
   return NextResponse.json(data);
 }

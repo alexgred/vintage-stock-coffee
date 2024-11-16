@@ -8,7 +8,7 @@ import { OrderItemProps, OrderStatus } from '@/types';
 import styles from './OrderItem.module.css';
 
 export default function OrderItem({
-  order: { name, user, price, timestamp, minutes, done },
+  order: { name, userId, user, price, timestamp, minutes, done },
   event,
   index,
 }: OrderItemProps) {
@@ -55,7 +55,11 @@ export default function OrderItem({
           {showForm ? 'Скрыть' : 'Написать'}
         </Button>
       </div>
-      {showForm && <div className={styles.form}><SendForm /></div>}
+      {showForm && (
+        <div className={styles.form}>
+          <SendForm userId={userId} closeForm={() => setShowForm(false)} />
+        </div>
+      )}
     </div>
   );
 }

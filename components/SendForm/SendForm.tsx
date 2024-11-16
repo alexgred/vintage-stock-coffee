@@ -1,25 +1,27 @@
 'use client';
 
-import { useState } from "react";
-import Button from "../Button";
-import { fetcher } from "@/lib/fetcher";
+import { useState } from 'react';
+import Button from '../Button';
+import { fetcher } from '@/lib/fetcher';
 
-
-export default function SendForm() {
+export default function SendForm({ userId, closeForm }: { userId: number, closeForm: () => void }) {
   const [message, setMessage] = useState<string>('');
 
-  function sendMessage(message: string): void {
-    fetcher('/api/message', {
+  async function sendMessage(userId: number, message: string): Promise<void> {
+    await fetcher('/api/message', {
       method: 'POST',
-      body: JSON.stringify({ message: message }),
+      body: JSON.stringify({ message: message, userId: userId }),
     });
+
+    closeForm();
   }
 
   return (
     <>
       <input type="text" onChange={(e) => setMessage(e.target.value)} />
-      <Button name="Send message" onClick={() => sendMessage(message)}>
+      <Button name="Send message" onClick={() => sendMessage(userId, message)}>
         Отправить
       </Button>
-    </>);
+    </>
+  );
 }

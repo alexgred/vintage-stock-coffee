@@ -6,7 +6,8 @@ import { Bot } from 'grammy';
 
 type Index = {
   index: number;
-}
+  userId: number;
+};
 
 export async function POST(req: Request) {
   const body: Index = await req.json();
@@ -18,7 +19,7 @@ export async function POST(req: Request) {
 
   config();
   const bot = new Bot(process.env.BOT_TOKEN as string);
-  bot.api.sendMessage(789808291, 'Ваш кофе готов. Не забудьте оплатить.');
+  bot.api.sendMessage(body.userId, 'Ваш кофе готов. Не забудьте оплатить.');
 
 
   jsonfile.writeFileSync('./db.json', data);

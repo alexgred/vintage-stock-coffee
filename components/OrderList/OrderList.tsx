@@ -1,23 +1,23 @@
 'use client';
 
+import { ReactNode } from 'react';
 import { fetcher } from '@/lib/fetcher';
 import useSWR from 'swr';
 import { OrderItem } from '@/components';
-import { Order } from '@/types';
+import { Order, OrderData } from '@/types';
 
 import styles from './OrderList.module.css';
-import { ReactNode} from 'react';
 
-/* eslint-disable  @typescript-eslint/no-explicit-any */
+
 export default function OrderList() {
-  const { data, error, isLoading, mutate } = useSWR<any, Error>(
+  const { data, error, isLoading, mutate } = useSWR<OrderData, Error>(
     '/api/orders',
     fetcher,
     {
       refreshInterval: 1000 * 60,
     },
   );
-  const orders: Order[] = data?.orders;
+  const orders = data?.orders;
 
   async function eventDelete(index: number) {
     mutate(
@@ -28,16 +28,16 @@ export default function OrderList() {
     );
   }
 
-  async function eventDone(index: number) {
+  async function eventDone(index: number, userId: number) {
     mutate(
       fetcher('/api/orders/done', {
         method: 'POST',
-        body: JSON.stringify({ index: index }),
+        body: JSON.stringify({ index: index, userId: userId }),
       }),
     );
   }
 
-  if (error) return <div className="container">Failed to load</div>;
+  if (error) return <div className="container">Failed to load<br />{error.message}</div>;
   if (isLoading) return <div className="container">Loading...</div>;
 
   const listDone: ReactNode[] = [];
@@ -55,6 +55,7 @@ export default function OrderList() {
           event={() => eventDelete(index)}
           buttonText="Оплачено"
           index={index}
+          done={true}
         />,
       );
     } else {
@@ -66,9 +67,10 @@ export default function OrderList() {
           price={order.price}
           timestamp={order.timestamp}
           minutes={order.minutes}
-          event={() => eventDone(index)}
+          event={() => eventDone(index, order.userId)}
           buttonText="Готово"
           index={index}
+          done={false}
         />,
       );
     }

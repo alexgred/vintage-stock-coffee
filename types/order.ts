@@ -13,7 +13,8 @@ export interface OrderData {
 export interface Order {
   id: number;
   name: string;
-  user: string;
+  userId: number;
+  user: string | undefined;
   price: number;
   timestamp: number;
   minutes: number;
@@ -26,13 +27,14 @@ export interface Order {
  */
 export interface OrderItemProps {
   name: string;
-  user: string;
+  user: string | undefined;
   price: number;
   timestamp: number;
   minutes: number;
   event: () => void;
   buttonText?: string;
   index: number;
+  done: boolean;
 }
 
 export type OrderStatus = 'active' | 'burning' | 'expired';

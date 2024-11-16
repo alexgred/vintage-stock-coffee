@@ -1,14 +1,11 @@
 'use client';
 
 import styles from "./Timer.module.css";
-import { useRenderCounter, useTimer } from '@/app/hooks';
+import { useTimer } from '@/hooks';
 import { OrderStatus } from "@/types";
 
-export default function Timer({stop, status}: {stop:number, status: (props: OrderStatus) => void}) {
-  const stopTime = stop - Date.now();
+export default function Timer({stopTime, status}: {stopTime:number, status: (props: OrderStatus) => void}) {
   const time = useTimer(stopTime);
-
-  const render = useRenderCounter();
 
   const expired = time < 0;
   if (expired) {
@@ -30,7 +27,6 @@ export default function Timer({stop, status}: {stop:number, status: (props: Orde
   return (
     <div className={styles.timer}>
       {expired ? 'Expired' : `${minutes}:${seconds}`}
-      -{render}
     </div>
   );
 }

@@ -26,15 +26,9 @@ export interface Order {
  * @interface
  */
 export interface OrderItemProps {
-  name: string;
-  user: string | undefined;
-  price: number;
-  timestamp: number;
-  minutes: number;
+  order: Order;
   event: () => void;
-  buttonText?: string;
   index: number;
-  done: boolean;
 }
 
 export type OrderStatus = 'active' | 'burning' | 'expired';

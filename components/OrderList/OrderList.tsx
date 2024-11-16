@@ -47,30 +47,18 @@ export default function OrderList() {
       listDone.push(
         <OrderItem
           key={order.id}
-          name={order.name}
-          user={order.user}
-          price={order.price}
-          timestamp={order.timestamp}
-          minutes={order.minutes}
+          order={order}
           event={() => eventDelete(index)}
-          buttonText="Оплачено"
           index={index}
-          done={true}
         />,
       );
     } else {
       listInProgress.push(
         <OrderItem
           key={order.id}
-          name={order.name}
-          user={order.user}
-          price={order.price}
-          timestamp={order.timestamp}
-          minutes={order.minutes}
+          order={order}
           event={() => eventDone(index, order.userId)}
-          buttonText="Готово"
           index={index}
-          done={false}
         />,
       );
     }

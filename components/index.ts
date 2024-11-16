@@ -8,3 +8,4 @@ export { OrderItem } from './OrderItem';
 export { OrderItemHeader } from './OrderItem';
 
 export { default as Timer } from './Timer';
+export { default as SendForm } from './SendForm';

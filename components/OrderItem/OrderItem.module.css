@@ -1,3 +1,4 @@
+
 .wrapper {
   width: 100%;
   display: flex;
@@ -9,11 +10,27 @@
   background-color: #1f1f1f;
 }
 
+.even {
+  background-color: #262626;
+}
+
 .item {
   flex: 1 1;
   display: flex;
 }
 
-.center {
+.expired {
+  background-color: var(--expiredColor);
 
+  &.even {
+    background-color: color-mix(in srgb, var(--expiredColor), white 10%);
+  }
+}
+
+.burning {
+  background-color: var(--burningColor);
+
+  &.even {
+    background-color: color-mix(in srgb, var(--expiredColor), white 10%);
+  }
 }

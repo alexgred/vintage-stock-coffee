@@ -32,4 +32,7 @@ export interface OrderItemProps {
   minutes: number;
   event: () => void;
   buttonText?: string;
+  index: number;
 }
+
+export type OrderStatus = 'active' | 'burning' | 'expired';

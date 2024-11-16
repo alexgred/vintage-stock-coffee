@@ -47,7 +47,6 @@ export default function OrderList() {
       listDone.push(
         <OrderItem
           key={order.id}
-          className={++index % 2 === 0 ? 'even' : 'odd'}
           name={order.name}
           user={order.user}
           price={order.price}
@@ -55,13 +54,13 @@ export default function OrderList() {
           minutes={order.minutes}
           event={() => eventDelete(index)}
           buttonText="Оплачено"
+          index={index}
         />,
       );
     } else {
       listInProgress.push(
         <OrderItem
           key={order.id}
-          className={++index % 2 === 0 ? 'even' : 'odd'}
           name={order.name}
           user={order.user}
           price={order.price}
@@ -69,6 +68,7 @@ export default function OrderList() {
           minutes={order.minutes}
           event={() => eventDone(index)}
           buttonText="Готово"
+          index={index}
         />,
       );
     }

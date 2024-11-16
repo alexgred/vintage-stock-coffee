@@ -1,29 +1,22 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-
 import styles from "./Timer.module.css";
+import { useRenderCounter, useTimer } from '@/app/hooks';
+import { OrderStatus } from "@/types";
 
-export default function Timer({stop}: {stop:number}) {
+export default function Timer({stop, status}: {stop:number, status: (props: OrderStatus) => void}) {
   const stopTime = stop - Date.now();
-  const [time, setTime] = useState<number>(stopTime);
+  const time = useTimer(stopTime);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTime((newTime) => {
-        if (time < 0) {
-          clearInterval(interval);
-          return -1;
-        } else {
-          return newTime - 1000;
-        }
-      });
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [time]);
+  const render = useRenderCounter();
 
   const expired = time < 0;
+  if (expired) {
+    status('expired');
+  } else if (time < 5 * 60 * 1000) {
+    status('burning');
+  }
+
   const countDown = new Date(time);
   const minutes =
     countDown.getMinutes() < 10
@@ -37,6 +30,7 @@ export default function Timer({stop}: {stop:number}) {
   return (
     <div className={styles.timer}>
       {expired ? 'Expired' : `${minutes}:${seconds}`}
+      -{render}
     </div>
   );
 }

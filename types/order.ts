@@ -18,6 +18,7 @@ export interface Order {
   price: number;
   timestamp: number;
   minutes: number;
+  spot: boolean;
   done: boolean;
 }
 
@@ -31,4 +32,4 @@ export interface OrderItemProps {
   index: number;
 }
 
-export type OrderStatus = 'active' | 'burning' | 'expired';
+export type OrderStatus = 'active' | 'burning' | 'expired' | 'spot';

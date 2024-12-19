@@ -15,13 +15,18 @@ export default function OrderItem({
   const [status, setStatus] = useState<OrderStatus>('active');
   const [showForm, setShowForm] = useState<boolean>(false);
 
-  const stopTime = minutes * 60 * 1000 + timestamp - Date.now();
+  let stopTime = 0;
+  if (minutes !== 0) {
+    stopTime = minutes * 60 * 1000 + timestamp - Date.now();
+  }
 
   const classStatus =
     status === 'expired'
       ? styles.expired
       : status === 'burning'
       ? styles.burning
+      : status === 'spot'
+      ? styles.spot
       : '';
   const classParity = ++index % 2 === 0 ? styles.even : styles.odd;
 

@@ -35,6 +35,14 @@
   background-color: var(--burningColor);
 
   &.even {
-    background-color: color-mix(in srgb, var(--expiredColor), white 10%);
+    background-color: color-mix(in srgb, var(--burningColor), white 10%);
+  }
+}
+
+.spot {
+  background-color: var(--spotColor);
+
+  &.even {
+    background-color: color-mix(in srgb, var(--spotColor), white 10%);
   }
 }

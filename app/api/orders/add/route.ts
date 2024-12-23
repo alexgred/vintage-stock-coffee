@@ -1,5 +1,7 @@
 import { Order, OrderData } from '@/types';
+import { config } from 'dotenv';
 import { appendFile } from 'fs';
+import { Bot } from 'grammy';
 import jsonfile from 'jsonfile';
 
 export async function POST(req: Request) {
@@ -16,6 +18,10 @@ export async function POST(req: Request) {
 
   const log = `Add - (${new Date().toUTCString()}) - ${JSON.stringify(body)}\n`;
   appendFile('./logs/order.log', log, (err) => console.log(err));
+
+  config();
+  const bot = new Bot(process.env.BOT_TOKEN as string);
+  bot.api.sendMessage(process.env.BARISTA_ID as string, '❗️Новый заказ.');
 
   return Response.json(body);
 }

@@ -13,7 +13,13 @@ export async function POST(req: Request) {
 
   config();
   const bot = new Bot(process.env.BOT_TOKEN as string);
-  bot.api.sendMessage(data.userId, data?.message);
+  bot.api.sendMessage(
+    data.userId,
+    `❗️<b>Информация по заказу:</b> ${data.message}`,
+    {
+      parse_mode: 'HTML',
+    },
+  );
 
   const log = `Send - (${new Date().toUTCString()}) - ${JSON.stringify(
     data

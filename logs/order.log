@@ -1,0 +1,8 @@
+Mon, 23 Dec 2024 08:55:08 GMT -- {"id":3469888211,"name":"Латте 340мл","userId":789808291,"user":"alexgred","price":200,"timestamp":1734944108012,"minutes":45,"spot":true,"done":false}
+Mon, 23 Dec 2024 08:57:14 GMT - {"id":3469888461,"name":"Флэт","userId":789808291,"user":"alexgred","price":250,"timestamp":1734944234386,"minutes":0,"spot":false,"done":false}
+Delete - (Mon, 23 Dec 2024 08:59:09 GMT) - {"index":0}
+Delete - (Mon, 23 Dec 2024 08:59:17 GMT) - {"index":15}
+Delete - (Mon, 23 Dec 2024 09:01:46 GMT) - [{"id":3469227316,"name":"Капучино 340мл","userId":789808291,"user":"alexgred","price":250,"timestamp":1734613661136,"minutes":15,"spot":true,"done":true}]
+Delete - (Mon, 23 Dec 2024 09:03:01 GMT) - {"index":7,"userId":789808291}
+Delete - (Mon, 23 Dec 2024 09:03:17 GMT) - {"index":4,"userId":789808291}
+Done - (Mon, 23 Dec 2024 09:04:12 GMT) - {"id":3469224363,"name":"Фильтр","userId":789808291,"user":"alexgred","price":150,"timestamp":1734612183277,"minutes":45,"done":true}

@@ -1,4 +1,5 @@
 import { Order, OrderData } from '@/types';
+import { appendFile } from 'fs';
 import jsonfile from 'jsonfile';
 
 export async function POST(req: Request) {
@@ -12,6 +13,9 @@ export async function POST(req: Request) {
   }
 
   jsonfile.writeFileSync('./db.json', data);
+
+  const log = `Add - (${new Date().toUTCString()}) - ${JSON.stringify(body)}\n`;
+  appendFile('./logs/order.log', log, (err) => console.log(err));
 
   return Response.json(body);
 }

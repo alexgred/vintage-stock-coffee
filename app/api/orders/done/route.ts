@@ -3,6 +3,7 @@ import jsonfile from 'jsonfile';
 import { OrderData } from '@/types';
 import { config } from 'dotenv';
 import { Bot } from 'grammy';
+import { appendFile } from 'fs';
 
 type Index = {
   index: number;
@@ -23,6 +24,11 @@ export async function POST(req: Request) {
 
 
   jsonfile.writeFileSync('./db.json', data);
+
+  const log = `Done - (${new Date().toUTCString()}) - ${JSON.stringify(
+    data.orders[body.index]
+  )}\n`;
+  appendFile('./logs/order.log', log, (err) => console.log(err));
 
   return NextResponse.json(body);
 }

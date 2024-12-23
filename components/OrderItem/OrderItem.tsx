@@ -8,7 +8,7 @@ import { OrderItemProps, OrderStatus } from '@/types';
 import styles from './OrderItem.module.css';
 
 export default function OrderItem({
-  order: { name, userId, user, price, timestamp, minutes, done },
+  order: { name, userId, user, price, timestamp, minutes, spot, done },
   event,
   index,
 }: OrderItemProps) {
@@ -36,6 +36,7 @@ export default function OrderItem({
         !done ? classStatus : ''
       }`}>
       <div className={styles.item}>{name}</div>
+      <div className={styles.item}>{spot ? 'На месте' : 'С собой'}</div>
       <div className={styles.item}>
         {user ? (
           <Link href={`https://t.me/${user}`}>@{user}</Link>

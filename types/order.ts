@@ -29,6 +29,7 @@ export interface Order {
 export interface OrderItemProps {
   order: Order;
   event: () => void;
+  remove: () => void;
   index: number;
 }
 

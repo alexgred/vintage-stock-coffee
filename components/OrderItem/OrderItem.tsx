@@ -10,6 +10,7 @@ import styles from './OrderItem.module.css';
 export default function OrderItem({
   order: { name, userId, user, price, timestamp, minutes, spot, done },
   event,
+  remove,
   index,
 }: OrderItemProps) {
   const [status, setStatus] = useState<OrderStatus>('active');
@@ -66,6 +67,9 @@ export default function OrderItem({
           <SendForm userId={userId} closeForm={() => setShowForm(false)} />
         </div>
       )}
+      <div className={styles.item}>
+        <Button onClick={remove}>Удалить</Button>
+      </div>
     </div>
   );
 }

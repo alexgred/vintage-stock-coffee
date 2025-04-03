@@ -49,6 +49,7 @@ export default function OrderList() {
           key={order.id}
           order={order}
           event={() => eventDelete(index)}
+          remove={() => eventDelete(index)}
           index={index}
         />,
       );
@@ -58,6 +59,7 @@ export default function OrderList() {
           key={order.id}
           order={order}
           event={() => eventDone(index, order.userId)}
+          remove={() => eventDelete(index)}
           index={index}
         />,
       );
